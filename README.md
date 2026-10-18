@@ -47,6 +47,19 @@ DeepSeek Harness 原生把「模型」交给 `dsh-client-ui-model-selection`，�
 
 百分比配色：`<80%` 绿 / `80–94%` 琥珀 / `>=95%` 红。区块高度上限 240px，超出独立滚动；面板内可强制刷新（绕过服务端缓存）。
 
+## 订阅模型
+
+除了 DeepSeek 原生模型，这个座位也会列出**订阅模型**（ChatGPT/Codex、Claude、Grok、GitHub Copilot、
+Google Antigravity）。它们由 [`dsh-plugin-subscriptions`](https://github.com/V1ki/dsh-plugin-subscriptions)
+通过 `ctx.llm.registerAdapter` 注册进模型目录，本插件只是照常把目录渲染出来 —— 所以订阅模型和原生模型
+在同一行「模型」里按厂商分组排列。
+
+- **桌面客户端**：已随包内置该插件，装好即可看到各订阅厂商分组；登录在 **设置 → 订阅** 页面完成。
+- **独立安装**：先装 `dsh-plugin-subscriptions`（在 DSH `0.2.1-rc.2` 上需要放宽 peer 范围的构建，
+  对应上游 PR #156），再装本插件。
+
+订阅插件缺失时，座位仍显示原生模型与思考强度，用量区块整块不渲染。
+
 ## 优雅降级
 
 - 没有登录任何订阅账号 → 用量区块整块不渲染
@@ -68,8 +81,7 @@ dsh plugin --profile web add dsh-enhanced-model-support
 ## 依赖
 
 - DeepSeek Harness `0.2.1-rc.2`
-- 可选：[`dsh-plugin-subscriptions`](https://github.com/V1ki/dsh-plugin-subscriptions) `>= 0.9.9`（仅用量区块需要）
-
+- 订阅模型与用量：[dsh-plugin-subscriptions](https://github.com/V1ki/dsh-plugin-subscriptions)（MIT © V1ki，可选；桌面客户端已随包内置）
 ## 结构
 
 ```
