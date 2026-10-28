@@ -2,8 +2,21 @@
 #
 # `dsh-app-boot` requires every entry in `dsh.profile.bundles` to resolve to a
 # package whose manifest declares `dsh.bundle`; this file is that declaration's
-# target. The row mounts the node half (inert) so the Loader has something to
-# mount; the browser half is discovered from `dsh.client` in package.json.
+# target. It mounts two rows:
+#
+#   1. the model seat (node half inert; browser half discovered from
+#      `dsh.client` in package.json), and
+#   2. the subscription stack — the MIT `dsh-plugin-subscriptions` code vendored
+#      under `vendor/`, which registers the provider adapters, the OAuth login
+#      flow, the `subscriptions-auth` RPC the seat reads usage from, and the
+#      Settings → Subscriptions page.
+#
+# A relative `./` insert path is resolved against this file at patch-load time,
+# so row 2 keeps pointing inside this package wherever the profile installs it.
+# Mount it by a bare package name instead and the row would resolve from the
+# profile root, where a nested install cannot see it.
 - insert:
     - id: enhanced-model-support
       name: dsh-enhanced-model-support
+    - id: enhanced-model-subscriptions
+      name: ./vendor/dsh-plugin-subscriptions/lib/index.js

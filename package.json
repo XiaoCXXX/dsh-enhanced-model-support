@@ -1,9 +1,12 @@
 {
   "name": "dsh-enhanced-model-support",
-  "version": "1.1.0",
-  "description": "DSH – Enhanced Model Support: one model seat for DeepSeek Harness that combines model selection, thinking-strength control and subscription usage in a single menu.",
+  "version": "2.0.0",
+  "description": "DSH – Enhanced Model Support: one model seat for DeepSeek Harness that combines model selection, thinking-strength control, subscription usage and the subscription providers (ChatGPT/Codex, Claude, Grok, GitHub Copilot, Google Antigravity) themselves.",
   "license": "MIT",
   "type": "module",
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.4.0"
+  },
   "main": "lib/index.js",
   "exports": {
     ".": {
@@ -16,7 +19,9 @@
   },
   "files": [
     "lib",
+    "vendor",
     "cordis.patch.yml",
+    "LICENSE",
     "README.md"
   ],
   "keywords": [
@@ -26,7 +31,13 @@
     "model-seat",
     "thinking",
     "subscription",
-    "usage"
+    "usage",
+    "oauth",
+    "codex",
+    "claude",
+    "grok",
+    "copilot",
+    "antigravity"
   ],
   "dsh": {
     "bundle": {
@@ -40,14 +51,6 @@
         "@deepseek-ai/dsh-client-ui-conversation",
         "@deepseek-ai/dsh-client-ui-renderer"
       ]
-    }
-  },
-  "peerDependencies": {
-    "dsh-plugin-subscriptions": ">=0.9.9"
-  },
-  "peerDependenciesMeta": {
-    "dsh-plugin-subscriptions": {
-      "optional": true
     }
   }
 }

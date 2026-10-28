@@ -1,3 +1,7 @@
-﻿node_modules/
+node_modules/
+# The vendored subscription stack ships its own undici copy so the package works
+# however it is installed (a plain directory copy resolves no dependencies).
+!vendor/dsh-plugin-subscriptions/node_modules/
+!vendor/dsh-plugin-subscriptions/node_modules/**
 *.log
 .DS_Store
