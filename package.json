@@ -1,7 +1,7 @@
 {
   "name": "dsh-enhanced-model-support",
-  "version": "2.0.0",
-  "description": "DSH – Enhanced Model Support: one model seat for DeepSeek Harness that combines model selection, thinking-strength control, subscription usage and the subscription providers (ChatGPT/Codex, Claude, Grok, GitHub Copilot, Google Antigravity) themselves.",
+  "version": "2.0.1",
+  "description": "DeepSeek Harness plugin: a single composer model seat for model selection, thinking-strength control and subscription usage, plus the built-in subscription providers (ChatGPT/Codex, Claude, Grok, Copilot, Antigravity) with their OAuth login and subscriptions-auth RPC.",
   "license": "MIT",
   "type": "module",
   "engines": {
